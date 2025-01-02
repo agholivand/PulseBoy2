@@ -1,7 +1,7 @@
 import sys
-sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy')
-sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy\\PulseBoy')
-sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy\\PyPulse')
+sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2')
+sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PulseBoy')
+sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PyPulse')
 
 from PyPulse import PulseInterface
 import numpy as np
@@ -227,8 +227,8 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         global_params = config['global_params']
         export_params = config['export_params']
 
-        self.analogInDevEdit.setText(hardware_params['analog_dev'])
-        self.analogChannelsEdit.setText(str(hardware_params['analog_channels']))
+        #self.analogInDevEdit.setText(hardware_params['analog_dev'])
+        #self.analogChannelsEdit.setText(str(hardware_params['analog_channels']))
         self.digitalOutDevEdit.setText(hardware_params['digital_dev'])
         self.digitalChannelsEdit.setText(str(hardware_params['digital_channels']))
         self.syncClockEdit.setText(hardware_params['sync_clock'])
