@@ -235,8 +235,8 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         global_params = config['global_params']
         export_params = config['export_params']
 
-        self.analogInDevEdit.setText(hardware_params['analog_dev'])
-        self.analogChannelsEdit.setText(str(hardware_params['analog_channels']))
+        # self.analogInDevEdit.setText(hardware_params['analog_dev'])
+        # self.analogChannelsEdit.setText(str(hardware_params['analog_channels']))
         self.digitalOutDevEdit.setText(hardware_params['digital_dev'])
         self.digitalChannelsEdit.setText(str(hardware_params['digital_channels']))
         self.syncClockEdit.setText(hardware_params['sync_clock'])
@@ -251,8 +251,9 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
 
     def get_hardware_params(self):
         params = dict()
-        params['analog_dev'] = self.analogInDevEdit.text()
-        params['analog_channels'] = int(self.analogChannelsEdit.text())
+        # params['analog_dev'] = self.analogInDevEdit.text()
+        # params['analog_channels'] = int(self.analogChannelsEdit.text())
+        params['analog_channels'] = 0
         params['digital_dev'] = self.digitalOutDevEdit.text()
         params['digital_channels'] = int(self.digitalChannelsEdit.text())
         params['sync_clock'] = self.syncClockEdit.text()
