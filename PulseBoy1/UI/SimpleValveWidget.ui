@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1421</width>
+    <height>113</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="font">
+   <font>
+    <family>Lucida Console</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="3" column="7">
+    <widget class="QLineEdit" name="shatterHzEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>500</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="9">
+    <widget class="QRadioButton" name="repeatsRadio">
+     <property name="text">
+      <string>Repeats</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="9">
+    <widget class="QRadioButton" name="lengthRadio">
+     <property name="text">
+      <string>Length (s)</string>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <widget class="QRadioButton" name="cleanRadio">
+     <property name="text">
+      <string>Clean</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="6">
+    <widget class="QRadioButton" name="shatterRadio">
+     <property name="text">
+      <string>Shatter</string>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="5">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Duty (/1)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Pulse Width (s)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="8">
+    <widget class="QLineEdit" name="shatterDutyEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>0.5</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="8">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>Duty (/1)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="7">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Frequency (Hz)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
+    <widget class="QLineEdit" name="pulseWidthEdit">
+     <property name="text">
+      <string>0.1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="10">
+    <widget class="QLineEdit" name="repeatsEdit">
+     <property name="text">
+      <string>5</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="5">
+    <widget class="QLineEdit" name="pulseDutyEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>0.5</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QLineEdit" name="pulseDelayEdit">
+     <property name="text">
+      <string>0.1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="11">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QRadioButton" name="fromValuesRadio">
+     <property name="text">
+      <string>From Values</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QRadioButton" name="fromDutyRadio">
+     <property name="text">
+      <string>From Duty</string>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Pulse Delay (s)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Offset</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLineEdit" name="offsetEdit">
+     <property name="text">
+      <string>0.1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="10">
+    <widget class="QLineEdit" name="lengthEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="onsetEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>0.1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Onset</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLineEdit" name="frequencyEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Frequency (Hz)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QToolButton" name="removeButton">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="2">
+    <widget class="QLabel" name="position">
+     <property name="text">
+      <string>1</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>fromValuesRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>fromDutyRadio</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fromDutyRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>fromValuesRadio</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>165</x>
+     <y>37</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cleanRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>shatterRadio</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>488</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>486</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shatterRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>cleanRadio</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>467</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>468</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>repeatsRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>lengthRadio</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>731</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>729</x>
+     <y>83</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lengthRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>repeatsRadio</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>753</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>756</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fromValuesRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pulseWidthEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>223</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>43</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fromValuesRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pulseDelayEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>373</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fromDutyRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>frequencyEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>86</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fromDutyRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pulseDutyEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>206</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shatterRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>shatterHzEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>503</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>559</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shatterRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>shatterDutyEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>488</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>653</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>repeatsRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>repeatsEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>773</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>797</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lengthRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>lengthEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>761</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>804</x>
+     <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

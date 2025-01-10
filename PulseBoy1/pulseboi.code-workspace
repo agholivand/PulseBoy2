@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\PyPulse"
+		},
+		{
+			"path": "..\\daqface"
+		},
+		{
+			"path": "..\\vipy"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "c:\\Users\\warnert\\Documents\\WinPython-64bit-3.6.3.0Qt5\\python-3.6.3.amd64\\python.exe"
+	}
+}

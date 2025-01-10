@@ -39,6 +39,7 @@ class ExperimentModel(QtCore.QAbstractTableModel):
         if self.arraydata[0] == default_row.copy()[0]:
             self.arraydata[0] = row
         else:
+            self.arraydata = list(self.arraydata)
             self.arraydata.append(row)
         self.layoutChanged.emit()
 
@@ -124,11 +125,22 @@ class ExperimentModel(QtCore.QAbstractTableModel):
 
     def randomise_trials(self, global_params):
         shuffle_offset = global_params['shuffle_offset']
+        shuffle_back_offset = global_params['shuffle_back_offset']
         shuffle_group_size = global_params['shuffle_group_size']
+        if shuffle_offset + shuffle_back_offset > len(self.arraydata):
+            shuffle_offset = math.ceil(len(self.arraydata)/2)
+            shuffle_back_offset = math.floor(len(self.arraydata)/2)
         out_shuffle = list(self.arraydata[:shuffle_offset])
-        shuffle_indexes = np.arange((math.ceil(len(self.arraydata)-shuffle_offset)/shuffle_group_size))*shuffle_group_size+shuffle_offset
+        out_shuffle_back = []
+        if shuffle_back_offset > 0:
+            out_shuffle_back = list(self.arraydata[-shuffle_back_offset:])
+        
+        print(len(out_shuffle_back), shuffle_back_offset)
+        shuffle_indexes = np.arange((math.ceil(len(self.arraydata)-shuffle_offset-shuffle_back_offset)/shuffle_group_size))*shuffle_group_size+shuffle_offset
         random.shuffle(shuffle_indexes)
         for i in shuffle_indexes:
             for j in range(shuffle_group_size):
                 out_shuffle.append(self.arraydata[int(i+j)])
+        if shuffle_back_offset > 0:
+            out_shuffle += out_shuffle_back
         self.arraydata = out_shuffle

@@ -1,7 +1,8 @@
 import sys
-sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2')
-sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PulseBoy')
-sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PyPulse')
+sys.path.append('C:\\Users\\amirr\\Py\\Pulseboy')
+#sys.path.append('C:\\Users\\warnert\\Documents\\GitHub\\PulseBoy_updated\\PulseBoy')
+sys.path.append('C:\\Users\\amirr\\Py\\Pulseboy\\PulseBoy')
+sys.path.append('C:\\Users\\amirr\\Py\\Pulseboy\\PyPulse')
 
 from PyPulse import PulseInterface
 import numpy as np
@@ -11,10 +12,10 @@ from Controllers import QueueControl, QueueControl
 from multiprocessing import Queue, Process, Manager
 from Designs import mainDesign
 from Models import PBWidgets
-try:
-    from vipulse import StreamNSave
-except ImportError:
-    print('No camera!')
+#try:
+    #from vipulse import StreamNSave
+#except ImportError:
+   # print('No camera!')
 import pickle as pickle
 import os.path
 import daqface.DAQ as daq
@@ -78,6 +79,9 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.closeCamerasButton.clicked.connect(self.terminateCameraStream)
         self.updateCamerasButton.clicked.connect(self.get_camera_params)
         self.closeValvesButton.clicked.connect(self.reset_all_chans)
+
+        ## Saving pulses
+        self.savePulseButton.clicked.connect(self.save_all_pulses)
 
 
     def add_valve(self, v_type='Simple', params=None):
@@ -210,6 +214,10 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         print(fname)
         self.trialBankModel.load_arraydata(fname)
         self.queue_controller.trial_list = self.trialBankModel.arraydata
+        trialbankName = os.path.split(os.path.abspath(fname))[1]
+        self.trialbankName = trialbankName.split('.')[0]
+        #self.queue_controller.trialbank_name = fname #Trying to save trialbank name as a variable
+        
 
     def save_config_data(self):
         config = {'hardware_params': self.get_hardware_params(),
@@ -227,8 +235,8 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         global_params = config['global_params']
         export_params = config['export_params']
 
-        #self.analogInDevEdit.setText(hardware_params['analog_dev'])
-        #self.analogChannelsEdit.setText(str(hardware_params['analog_channels']))
+        self.analogInDevEdit.setText(hardware_params['analog_dev'])
+        self.analogChannelsEdit.setText(str(hardware_params['analog_channels']))
         self.digitalOutDevEdit.setText(hardware_params['digital_dev'])
         self.digitalChannelsEdit.setText(str(hardware_params['digital_channels']))
         self.syncClockEdit.setText(hardware_params['sync_clock'])
@@ -248,9 +256,10 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         params['digital_dev'] = self.digitalOutDevEdit.text()
         params['digital_channels'] = int(self.digitalChannelsEdit.text())
         params['sync_clock'] = self.syncClockEdit.text()
-        #params['sync_clock'] = "OnboardClock"  # Replace with the desired clock source
         params['samp_rate'] = float(self.sampRateEdit.text())
         params['trigger_source'] = self.triggerInEdit.text()
+        params['control_carrier'] = self.carrierControlBox.isChecked()
+#        params['carrier_chan'] = int(self.carrierDeviceEdit.text())
 
         return params
 
@@ -269,6 +278,7 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
 
         params['shuffle_offset'] = int(self.shuffleOffsetlineEdit.text())
         params['shuffle_group_size'] = int(self.shuffleGrouplineEdit.text())
+        params['shuffle_back_offset'] = int(self.shuffleBackOffsetlineEdit.text())
         return params
 
     def get_export_params(self):
@@ -278,7 +288,7 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         params['export_path'] = str(self.exportPathEdit.text())
         params['pulse_suffix'] = str(self.pulseSuffixEdit.text())
         params['trial_suffix'] = str(self.trialNameSuffixEdit.text())
-
+        params['trialbankName'] = str(self.trialbankName) #getting trialbank name as a key-value pair
         return params
 
     def set_export_path(self):
@@ -305,6 +315,30 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.cameraParams['cameraSuffix'] = str(self.cameraSuffixEdit.text())
         self.cameraParams['inter_stream_interval'] = float(self.cameraSaveIntervalEdit.text())
         self.cameraParams['recording_ind'] = bool(self.cameraSaveIconBox.isChecked())
+
+    def save_all_pulses(self):
+        global_params = self.get_global_params()
+        hardware_params = self.get_hardware_params()
+        export_params = self.get_export_params()
+        invert_valves = []
+        all_pulses = {}
+        for trial_params in self.trialBankModel.arraydata:
+            pulses, t = PulseInterface.make_pulse(hardware_params['samp_rate'],
+                                                      global_params['global_onset'],
+                                                      global_params['global_offset'],
+                                                      trial_params[1])
+            
+
+            #Add timestamp as prefix to the file name
+            save_string = export_params['export_path'] + trial_params[-1] + '_'+export_params['pulse_suffix'] + '.npy'
+            np.save(save_string, pulses)
+            all_pulses[trial_params[-1]] = pulses
+        save_string = export_params['export_path'] + export_params['pulse_suffix'] + '.pkl'
+        #pickle.dump(all_pulses, open(save_string, 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
+        
+
+
+
 
 
 # Back up the reference to the exceptionhook

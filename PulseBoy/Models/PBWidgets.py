@@ -242,7 +242,6 @@ class BinaryPlumeValveWidget(QtWidgets.QWidget, binaryValveDesign.Ui_Form):
         self.numofbinsEdit.setText(str(params['num_of_bins']))
         self.valuetobinariseEdit.setText(str(params['value_to_binarise']))
         self.binsizeEdit.setText(str(params['bin_size']))
-        self.shatterEdit.setText(str(params['shatter_frequency']))
         self.position.setText(str(params['position']))
         if 'shatter_frequency' in params:
             self.shatterEdit.setText(str(params['shatter_frequency']))
@@ -252,6 +251,7 @@ class BinaryPlumeValveWidget(QtWidgets.QWidget, binaryValveDesign.Ui_Form):
             self.shatterBox.setChecked(bool(params['isShatter']))
         else:
             self.shatterBox.setChecked(False)
+
 
 
 class TrialWidget(QtWidgets.QWidget, trialDesign.Ui_Form):
