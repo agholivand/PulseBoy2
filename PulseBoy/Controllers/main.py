@@ -312,7 +312,7 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.cameraParams['showStream'] = bool(self.showStreamcheckBox.isChecked())
         self.cameraParams['outDir'] = str(self.exportPathEdit.text())
         self.cameraParams['cams'] = int(self.numberCamerasEdit.text())
-        self.cameraParams['cameraSuffix'] = str(self.cameraSuffixEdit.text())
+        # self.cameraParams['cameraSuffix'] = str(self.cameraSuffixEdit.text())
         self.cameraParams['inter_stream_interval'] = float(self.cameraSaveIntervalEdit.text())
         self.cameraParams['recording_ind'] = bool(self.cameraSaveIconBox.isChecked())
 
