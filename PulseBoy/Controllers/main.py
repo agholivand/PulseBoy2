@@ -1,8 +1,8 @@
 import sys
-sys.path.append('C:\\Users\\amirr\\Py\\Pulseboy')
+sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2')
 #sys.path.append('C:\\Users\\warnert\\Documents\\GitHub\\PulseBoy_updated\\PulseBoy')
-sys.path.append('C:\\Users\\amirr\\Py\\Pulseboy\\PulseBoy')
-sys.path.append('C:\\Users\\amirr\\Py\\Pulseboy\\PyPulse')
+sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PulseBoy')
+sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PyPulse')
 
 from PyPulse import PulseInterface
 import numpy as np
@@ -70,15 +70,15 @@ class MainApp(QtWidgets.QMainWindow, mainDesign.Ui_MainWindow):
         self.runSelectedButton.clicked.connect(lambda x: self.queue_controller.run_selected(self.trialBankTable.selectionModel().selectedRows()[0].row()))
         self.startQueueFromSelectedButton.clicked.connect(lambda x: self.queue_controller.run_from_selected(self.trialBankTable.selectionModel().selectedRows()[0].row()))
 
-        ## Camera code
-        camera_params = Manager().dict()
-        self.cameraParams = camera_params
-        self.launchCameraButton.clicked.connect(self.startStream)
+        # ## Camera code
+        # camera_params = Manager().dict()
+        # self.cameraParams = camera_params
+        # self.launchCameraButton.clicked.connect(self.startStream)
 
-        self.get_camera_params()
-        self.closeCamerasButton.clicked.connect(self.terminateCameraStream)
-        self.updateCamerasButton.clicked.connect(self.get_camera_params)
-        self.closeValvesButton.clicked.connect(self.reset_all_chans)
+        # self.get_camera_params()
+        # self.closeCamerasButton.clicked.connect(self.terminateCameraStream)
+        # self.updateCamerasButton.clicked.connect(self.get_camera_params)
+        # self.closeValvesButton.clicked.connect(self.reset_all_chans)
 
         ## Saving pulses
         self.savePulseButton.clicked.connect(self.save_all_pulses)

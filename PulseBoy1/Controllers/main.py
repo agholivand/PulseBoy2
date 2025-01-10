@@ -1,6 +1,6 @@
 import sys
 sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2')
-sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PulseBoy')
+sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PulseBoy1')
 sys.path.append('C:\\Users\\amirr\\Py\\PulseBoy2\\PyPulse')
 
 from PyPulse import PulseInterface
